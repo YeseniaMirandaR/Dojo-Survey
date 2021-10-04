@@ -1,0 +1,48 @@
+INSERT INTO dojos (name)
+VALUES ('Main'),
+        ('Second'),
+        ('Third');
+
+SET SQL_SAFE_UPDATES = 0;
+
+DELETE 
+FROM dojos
+WHERE name= 'Main' OR name= 'Second' OR name= 'Third';
+
+INSERT INTO dojos (name)
+VALUES ('Main'),
+        ('Second'),
+        ('Third');
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Billie', 'Holiday', 44, 4),
+        ('Ella', 'Fitzgerald', 79, 4),
+        ('Ma', 'Rainey', 53, 4);
+
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Cindy', 'Blackman', 61, 5),
+        ('Ruth', 'Underwood', 75, 5),
+        ('Evelyn', 'Glennie', 56, 5);
+               
+INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+VALUES ('Tal', 'Wikenfeld', 34, 6),
+        ('Gail Ann', 'Dorsey', 58, 6),
+        ('Esperanza', 'Spalding', 36, 6);
+    
+SELECT*
+FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id= 4;
+
+SELECT*
+FROM dojos
+LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id
+WHERE dojos.id= 6;
+
+SELECT*
+FROM dojos
+WHERE dojos.id= (SELECT dojo_id FROM ninjas ORDER BY dojo_id DESC LIMIT 1);
+
+
+
+
